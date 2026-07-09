@@ -11,9 +11,6 @@ public class HP : MonoBehaviour
         currentHP = maxHP;
     }
 
-    /// <summary>
-    /// ƒ_ƒ[ƒW‚ğó‚¯‚é
-    /// </summary>
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
@@ -26,9 +23,6 @@ public class HP : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// €–S
-    /// </summary>
     void Die()
     {
         Debug.Log(gameObject.name + " Dead");
