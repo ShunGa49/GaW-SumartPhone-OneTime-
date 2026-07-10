@@ -110,43 +110,33 @@ public class MobileInputVisualizer : MonoBehaviour
     /// </summary>
     void CheckGesture()
     {
-        // スワイプした量
         Vector2 diff = currentPosition - startPosition;
 
-        // 短すぎたらタップ
         if (diff.magnitude < swipeDistance)
         {
             currentState = "Tap";
             return;
         }
 
-        // 横方向のほうが大きい
         if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y))
         {
-            // 右スワイプ
             if (diff.x > 0)
             {
                 currentState = "Swipe Right";
-
-                // 回避
-                if (animator != null)
-                {
-                    animator.SetTrigger("Dodge");
-                }
+                animator.SetTrigger("DodgeRight");
+            }
+            else
+            {
+                currentState = "Swipe Left";
+                animator.SetTrigger("DodgeLeft");
             }
         }
         else
         {
-            // 上スワイプ
             if (diff.y > 0)
             {
                 currentState = "Swipe Up";
-
-                // 攻撃
-                if (animator != null)
-                {
-                    animator.SetTrigger("Attack");
-                }
+                animator.SetTrigger("Attack");
             }
         }
     }
